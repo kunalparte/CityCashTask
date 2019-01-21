@@ -96,7 +96,7 @@ public class DashBoardActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         frameLayout.setVisibility(View.VISIBLE);
         int id = item.getItemId();
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+
         if (inputMethodManager.isActive())
         inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),0);
 
@@ -144,6 +144,7 @@ public class DashBoardActivity extends AppCompatActivity
         products = new ArrayList<>();
         swipeRefreshLayout.setOnRefreshListener(this);
         editText.addTextChangedListener( this);
+        inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         if (Consts.isNetworkAvailable(this)){
             dataViewPresenter.prepareListApiCall();
         }else {
@@ -175,6 +176,8 @@ public class DashBoardActivity extends AppCompatActivity
         if (swipeRefreshLayout.isRefreshing()){
             swipeRefreshLayout.setRefreshing(false);
         }
+        //products = new ArrayList<>();
+        products.clear();
         products.addAll(productsList);
         dataRecycler.setLayoutManager(linearLayoutManager);
         setDataOnRecycler(products);
@@ -197,13 +200,14 @@ public class DashBoardActivity extends AppCompatActivity
     public void onRefresh() {
         if (Consts.isNetworkAvailable(this)) {
             if (products.size() > 0)
-            products.clear();
             dataViewPresenter.prepareListApiCall();
         }else {
             Toast.makeText(this, "Connect to internet and refresh", Toast.LENGTH_SHORT).show();
             if (swipeRefreshLayout.isRefreshing())
                 swipeRefreshLayout.setRefreshing(false);
         }
+        if (inputMethodManager.isActive())
+            inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),0);
     }
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
