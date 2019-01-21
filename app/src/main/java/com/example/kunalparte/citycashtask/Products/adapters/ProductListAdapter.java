@@ -13,6 +13,7 @@ import com.example.kunalparte.citycashtask.Products.interfaces.OnRecyclerItemCli
 import com.example.kunalparte.citycashtask.Products.models.Products;
 import com.example.kunalparte.citycashtask.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductVh> {
@@ -46,6 +47,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public int getItemCount() {
         return productsList.size();
+    }
+
+    public void setFilteredList(List<Products> products) {
+        productsList = new ArrayList<>();
+        productsList.addAll(products);
     }
 
     public class ProductVh extends RecyclerView.ViewHolder implements View.OnClickListener {

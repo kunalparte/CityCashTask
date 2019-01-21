@@ -55,6 +55,8 @@ public class DashBoardActivity extends AppCompatActivity
     private FrameLayout frameLayout;
     private EditText editText;
     private InputMethodManager inputMethodManager;
+    private List<Products>productsListfiltered;
+    private boolean isFiltere = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,7 +161,11 @@ public class DashBoardActivity extends AppCompatActivity
     public void onRecyclerItemClicked(int position) {
         Intent intent = new Intent(this, ProductDetailsActivity.class);
         intent.putExtra(Consts.PRODUCT_ID_KEY, products.get(position).getId());
-        intent.putExtra(Consts.NAME_KEY, products.get(position).getName());
+        if (!isFiltere) {
+            intent.putExtra(Consts.NAME_KEY, products.get(position).getName());
+        }else {
+            intent.putExtra(Consts.NAME_KEY, productsListfiltered.get(position).getName());
+        }
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
@@ -212,16 +218,21 @@ public class DashBoardActivity extends AppCompatActivity
     @Override
     public void afterTextChanged(Editable s) {
         if (s.length() > 2){
-            List<Products>productsListfiltered = new ArrayList<>();
+            isFiltere = true;
+            productsListfiltered = new ArrayList<>();
             for (Products product : products){
                 String searchWord = s.toString();
                 if (product.getName().toLowerCase().contains(searchWord)){
                     productsListfiltered.add(product);
                 }
             }
-            setDataOnRecycler(productsListfiltered);
+            productListAdapter.setFilteredList(productsListfiltered);
+            productListAdapter.notifyDataSetChanged();
         }else {
-            setDataOnRecycler(products);
+            isFiltere = false;
+            productListAdapter.setFilteredList(products);
+            productListAdapter.notifyDataSetChanged();
+
         }
     }
 }
