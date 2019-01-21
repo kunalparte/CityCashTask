@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="primaryText">#509093</color>
+    <color name="buttonNormal">#f10f0b</color>
+    <color name="buttonHighlight">#e27982</color>
+    <color name="buttonText">#a98c8c</color>
+    <color name="listText">#1b7b7c</color>
+
+    <!--for orange theme-->
+    <color name="colorPrimaryOrange">#fa046f</color>
+    <color name="colorPrimaryDarkOrange">#b9205a</color>
+    <color name="colorAccentOrange">#dc1659</color>
+    <color name="primaryTextOrange">#c99898</color>
+    <color name="buttonNormalOrange">#f8d6082b</color>
+    <color name="buttonHighlightOrange">#cf6663</color>
+    <color name="buttonTextOrange">#271b63</color>
+    <color name="listTextOrange">#4d0318</color>
+
+
+    <color name="lighter_gray">#ddd</color>
+    <color name="darker_gray">#aaa</color>
+    <color name="green">#5F9E45</color>
+    <color name="colorPrimaryLight">#90cf73</color>
+    <color name="white">#ffff</color>
+    <color name="black">#000000</color>
+</resources>

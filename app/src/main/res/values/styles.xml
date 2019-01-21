@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/lighter_gray</item>
+        <item name="textStyleEt">@style/EditText.TextAppearance</item>
+        <item name="primaryButtonTheme">@style/Widget.Button.Primary</item>
+        <item name="textViewStyleSmall">@style/TextViewCustomStyleSmall</item>
+        <item name="textViewStyleMediumItalic">@style/TextViewCustomStyleMediumItalic</item>
+        <item name="textViewStyleMediumBold">@style/TextViewCustomStyleMediumBold</item>
+        <item name="textViewStyleLarge">@style/TextViewCustomStyleLarge</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="textStyleEt">@style/EditText.TextAppearance</item>
+        <item name="primaryButtonTheme">@style/Widget.Button.Primary</item>
+        <item name="textViewStyleSmall">@style/TextViewCustomStyleSmall</item>
+        <item name="textViewStyleMediumItalic">@style/TextViewCustomStyleMediumItalic</item>
+        <item name="textViewStyleMediumBold">@style/TextViewCustomStyleMediumBold</item>
+        <item name="textViewStyleLarge">@style/TextViewCustomStyleLarge</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.App.Red" parent="AppTheme">
+        <item name="primaryButtonTheme">@style/Widget.Button.Primary</item>
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/lighter_gray</item>
+        <item name="primaryTextColor">@color/lighter_gray</item>
+        <item name="buttonNormalColor">@color/green</item>
+        <item name="buttonHighlightColor">@color/colorPrimaryLight</item>
+        <item name="buttonTextColor">@color/white</item>
+        <item name="textColorET">@color/darker_gray</item>
+        <item name="textColorTV">@color/black</item>
+        <item name="backGroundEt">@color/white</item>
+
+    </style>
+
+    <style name="Theme.App.NoActionBar" parent="AppTheme.NoActionBar">
+        <item name="buttonNormalColor">@color/green</item>
+        <item name="buttonHighlightColor">@color/colorPrimaryLight</item>
+        <item name="buttonTextColor">@color/white</item>
+        <item name="textColorET">@color/darker_gray</item>
+        <item name="backGroundEt">@color/white</item>
+        <item name="textColorTV">@color/black</item>
+    </style>
+
+</resources>

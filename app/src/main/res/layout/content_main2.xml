@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Products.views.DashBoardActivity"
+    tools:showIn="@layout/app_bar_main2">
+
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeRefreshLay"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <EditText
+            style="@style/EditText.TextAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:id="@+id/searchEditText"
+            android:layout_alignParentTop="true"
+            android:hint="Search By name"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchEditText"
+            android:id="@+id/dataList"
+            android:layout_margin="8dp"
+            />
+
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frameLayout"
+        android:visibility="gone"/>
+
+</RelativeLayout>

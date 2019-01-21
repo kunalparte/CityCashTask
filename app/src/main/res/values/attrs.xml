@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="primaryTextColor" format="reference"/>
+    <attr name="buttonNormalColor" format="reference"/>
+    <attr name="buttonHighlightColor" format="reference" />
+    <attr name="buttonTextColor" format="reference" />
+    <attr name="primaryButtonTheme" format="reference" />
+
+
+    <!--EditText references-->
+    <attr name="textColorET" format="reference"/>
+    <attr name="textSizeEt" format="reference"/>
+    <attr name="textStyleEt" format="reference"/>
+    <attr name="backGroundEt" format="reference"/>
+
+    <!--TextView attrs-->
+    <attr name="textViewStyleSmall" format="reference"/>
+    <attr name="textViewStyleMediumItalic" format="reference"/>
+    <attr name="textViewStyleMediumBold" format="reference"/>
+    <attr name="textViewStyleLarge" format="reference"/>
+    <attr name ="textColorTV" format="reference"/>
+</resources>

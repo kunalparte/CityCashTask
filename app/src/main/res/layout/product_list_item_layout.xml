@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="16dp"
+        android:id="@+id/imageCardView"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        >
+    <ImageView
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:id="@+id/productIamge"
+        android:background="@color/colorPrimaryLight"
+        />
+
+    </android.support.v7.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/imageCardView">
+
+
+        <TextView
+            style="@style/TextViewCustomStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productNameTV"
+            android:text="Stole Wole"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            style="@style/TextViewCustomStyleMediumBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productCatTV"
+            android:text="2"
+            android:layout_marginTop="8dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                style="@style/TextViewCustomStyleLarge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/quantityTV"
+                android:text="Stole Wole"
+                android:layout_weight="1"/>
+
+            <TextView
+                style="@style/TextViewCustomStyleLarge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/priceTV"
+                android:text="2"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/rupee_indian"
+                android:drawablePadding="4dp"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="@color/darker_gray"/>
+</RelativeLayout>
