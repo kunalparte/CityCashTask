@@ -29,6 +29,15 @@
             android:hint="Search By name"
             />
 
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:id="@+id/filterButton"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_filter_list_black_24dp"
+                android:backgroundTint="@color/colorPrimaryLight"
+                />
+
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

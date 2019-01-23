@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -37,10 +38,12 @@ import com.example.kunalparte.citycashtask.Products.presenter.DataViewPresenterI
 import com.example.kunalparte.citycashtask.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class DashBoardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,ViewInterface, OnRecyclerItemClickListener, SwipeRefreshLayout.OnRefreshListener, TextWatcher {
+        implements NavigationView.OnNavigationItemSelectedListener,ViewInterface, OnRecyclerItemClickListener, SwipeRefreshLayout.OnRefreshListener, TextWatcher, View.OnClickListener {
 
     private RecyclerView dataRecycler;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -54,9 +57,12 @@ public class DashBoardActivity extends AppCompatActivity
     private NavigationView navigationView;
     private FrameLayout frameLayout;
     private EditText editText;
+    private ImageButton filterButton;
     private InputMethodManager inputMethodManager;
     private List<Products>productsListfiltered;
+    private List<Products> productOriginalStateList;
     private boolean isFiltere = false;
+    private int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,14 +142,17 @@ public class DashBoardActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         dataRecycler = (RecyclerView) findViewById(R.id.dataList);
+        filterButton = (ImageButton) findViewById(R.id.filterButton);
         frameLayout = (FrameLayout) findViewById(R.id.frameLayout);
         swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLay);
         editText = (EditText) findViewById(R.id.searchEditText);
         dataViewPresenter = new DataViewPresenterImpl(new OnApiRequestCallImpl(),this);
         linearLayoutManager = new LinearLayoutManager(this);
         products = new ArrayList<>();
+        productOriginalStateList = new ArrayList<>();
         swipeRefreshLayout.setOnRefreshListener(this);
         editText.addTextChangedListener( this);
+        filterButton.setOnClickListener(this);
         inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         if (Consts.isNetworkAvailable(this)){
             dataViewPresenter.prepareListApiCall();
@@ -177,10 +186,16 @@ public class DashBoardActivity extends AppCompatActivity
             swipeRefreshLayout.setRefreshing(false);
         }
         //products = new ArrayList<>();
+        if (productOriginalStateList.size() > 0){
+            productOriginalStateList.clear();
+        }
+        productOriginalStateList.addAll(productsList);
         products.clear();
         products.addAll(productsList);
         dataRecycler.setLayoutManager(linearLayoutManager);
         setDataOnRecycler(products);
+//        Collections.sort(products, Products.FILTER_A);
+//        int size = products.size();
     }
 
     @Override
@@ -237,6 +252,73 @@ public class DashBoardActivity extends AppCompatActivity
             productListAdapter.setFilteredList(products);
             productListAdapter.notifyDataSetChanged();
 
+        }
+    }
+
+    public List<Products> returnReveredList(List<Products> productsList){
+        List<Products> productsList1 = new ArrayList<>();
+        for (int i = productsList.size()-1; i >= 0; i--){
+            productsList1.add(productsList.get(i));
+        }
+        return productsList1;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode,resultCode,intent);
+        if (requestCode == 1){
+            if (resultCode == 2){
+                String filter = intent.getStringExtra(Consts.FILTER_KEY);
+                id = intent.getIntExtra(Consts.RADIO_ID,0);
+                if (filter != null && !filter.isEmpty()){
+                    switch (filter){
+                        case Consts.A_ORDER:
+                            Collections.sort(products, Products.FILTER_A_ORDER);
+                            productListAdapter.setFilteredList(productsListfiltered);
+                            break;
+                        case Consts.A_REV:
+                            Collections.sort(products, Products.FILTER_A_ORDER);
+                            productListAdapter.setFilteredList(returnReveredList(products));
+                            break;
+                        case Consts.B_ORDER:
+                            Collections.sort(products, Products.FILTER_B_ORDER);
+                            productListAdapter.setFilteredList(products);
+                            break;
+                        case Consts.B_REV:
+                            Collections.sort(products, Products.FILTER_B_ORDER);
+                            productListAdapter.setFilteredList(returnReveredList(products));
+                            break;
+                        case Consts.C_ORDER:
+                            Collections.sort(products, Products.FILTER_C_ORDER);
+                            productListAdapter.setFilteredList(products);
+                            break;
+                        case Consts.C_REV:
+                            Collections.sort(products, Products.FILTER_C_ORDER);
+                            productListAdapter.setFilteredList(returnReveredList(products));
+                            break;
+                        case Consts.NO_FILTER:
+                            products.clear();
+                            products.addAll(productOriginalStateList);
+                            productListAdapter.setFilteredList(products);
+                            break;
+
+                    }
+                    productListAdapter.notifyDataSetChanged();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.filterButton:
+                Intent intent = new Intent(this,FilterActivity.class);
+                if (id != 0){
+                    intent.putExtra(Consts.RADIO_ID,id);
+                }
+                startActivityForResult(intent,1);
+                break;
         }
     }
 }

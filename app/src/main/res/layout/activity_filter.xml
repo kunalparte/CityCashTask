@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Products.views.FilterActivity">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/radioGroup"
+        android:orientation="vertical"
+        android:layout_margin="8dp">
+        
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="A - low - high"
+            android:id="@+id/aRadioOne"
+            android:textSize="16sp"/>
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="A - high - low"
+            android:id="@+id/aRadioTwo"
+            android:textSize="16sp"/>
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="B - low - high"
+            android:id="@+id/bRadioOne"
+            android:textSize="16sp"/>
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="B - high - low"
+            android:id="@+id/bRadioTwo"
+            android:textSize="16sp"
+            />
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="C - low - high"
+            android:id="@+id/cRadioOne"
+            android:textSize="16sp"/>
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="C - high - low"
+            android:id="@+id/cRadioTwo"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Remove filter"
+            android:id="@+id/noFilterButton"
+            android:textSize="16sp"/>
+
+    </RadioGroup>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/saveFilterButton"
+        android:text="Save Filter"
+        android:gravity="center"
+        android:background="@color/colorPrimaryLight"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:textColor="@color/white"
+        />
+</RelativeLayout>

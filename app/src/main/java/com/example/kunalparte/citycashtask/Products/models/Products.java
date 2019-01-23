@@ -1,5 +1,7 @@
 package com.example.kunalparte.citycashtask.Products.models;
 
+import java.util.Comparator;
+
 public class Products {
 
     /**
@@ -105,4 +107,24 @@ public class Products {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public static Comparator<Products> FILTER_A_ORDER = new Comparator<Products>() {
+        public int compare(Products one, Products other) {
+            return String.valueOf(one.getSort_props().getA()).compareTo(String.valueOf(other.getSort_props().getA()));
+        }
+    };
+
+    public static Comparator<Products> FILTER_B_ORDER = new Comparator<Products>() {
+        public int compare(Products one, Products other) {
+            return String.valueOf(one.getSort_props().getB()).compareTo(String.valueOf(other.getSort_props().getB()));
+        }
+    };
+
+    public static Comparator<Products> FILTER_C_ORDER = new Comparator<Products>() {
+        public int compare(Products one, Products other) {
+            return String.valueOf(one.getSort_props().getC()).compareTo(String.valueOf(other.getSort_props().getC()));
+        }
+    };
+
+
 }

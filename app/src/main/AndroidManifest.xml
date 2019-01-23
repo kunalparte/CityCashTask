@@ -11,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Red">
-
-        <activity android:name=".Products.views.ProductDetailsActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".Products.views.ProductDetailsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Products.views.DashBoardActivity"
             android:label="@string/title_activity_main2"
@@ -26,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Products.views.FilterActivity"></activity>
     </application>
 
 </manifest>

@@ -16,6 +16,24 @@ public class Consts {
 
     public static final String NAME_KEY = "name";
 
+    public static final String A_ORDER = "A - low - high";
+
+    public static final String A_REV = "A - high - low";
+
+    public static final String B_ORDER = "B - low - high";
+
+    public static final String B_REV = "B - high - low";
+
+    public static final String C_ORDER = "C - low - high";
+
+    public static final String C_REV = "C - high - low";
+
+    public static final String NO_FILTER = "Remove filter";
+
+    public static final String FILTER_KEY = "filterKey";
+
+    public static final String RADIO_ID = "radioId";
+
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
