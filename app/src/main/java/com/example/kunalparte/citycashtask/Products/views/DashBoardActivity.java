@@ -214,7 +214,6 @@ public class DashBoardActivity extends AppCompatActivity
     @Override
     public void onRefresh() {
         if (Consts.isNetworkAvailable(this)) {
-            if (products.size() > 0)
             dataViewPresenter.prepareListApiCall();
         }else {
             Toast.makeText(this, "Connect to internet and refresh", Toast.LENGTH_SHORT).show();
@@ -313,11 +312,15 @@ public class DashBoardActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.filterButton:
-                Intent intent = new Intent(this,FilterActivity.class);
-                if (id != 0){
-                    intent.putExtra(Consts.RADIO_ID,id);
+                if (products.size() > 0) {
+                    Intent intent = new Intent(this, FilterActivity.class);
+                    if (id != 0) {
+                        intent.putExtra(Consts.RADIO_ID, id);
+                    }
+                    startActivityForResult(intent, 1);
+                }else{
+                    Toast.makeText(this, "Connect to internet and refresh", Toast.LENGTH_SHORT).show();
                 }
-                startActivityForResult(intent,1);
                 break;
         }
     }
