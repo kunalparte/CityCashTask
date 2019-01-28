@@ -186,16 +186,19 @@ public class DashBoardActivity extends AppCompatActivity
             swipeRefreshLayout.setRefreshing(false);
         }
         //products = new ArrayList<>();
-        if (productOriginalStateList.size() > 0){
-            productOriginalStateList.clear();
+        if (productsList.size() > 0) {
+            if (productOriginalStateList.size() > 0) {
+                productOriginalStateList.clear();
+            }
+            productOriginalStateList.addAll(productsList);
+            products.clear();
+            products.addAll(productsList);
+            dataRecycler.setLayoutManager(linearLayoutManager);
+            setDataOnRecycler(products);
+        }else{
+            Toast.makeText(this,"Connect To internet ", Toast.LENGTH_SHORT).show();
         }
-        productOriginalStateList.addAll(productsList);
-        products.clear();
-        products.addAll(productsList);
-        dataRecycler.setLayoutManager(linearLayoutManager);
-        setDataOnRecycler(products);
-//        Collections.sort(products, Products.FILTER_A);
-//        int size = products.size();
+
     }
 
     @Override
@@ -220,8 +223,8 @@ public class DashBoardActivity extends AppCompatActivity
             if (swipeRefreshLayout.isRefreshing())
                 swipeRefreshLayout.setRefreshing(false);
         }
-        if (inputMethodManager.isActive())
-            inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),0);
+
+            inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getRootView().getWindowToken(),0);
     }
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
