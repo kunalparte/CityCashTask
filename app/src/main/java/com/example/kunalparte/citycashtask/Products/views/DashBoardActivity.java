@@ -104,7 +104,7 @@ public class DashBoardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (inputMethodManager.isActive())
-        inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),0);
+        inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getRootView().getWindowToken(),0);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         switch (id){
